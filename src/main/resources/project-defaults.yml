@@ -1,0 +1,15 @@
+thorntail:
+  deployment:
+    bootcamp-api-1.0-SNAPSHOT.war:
+      swagger:
+        packages:
+          - mx.com.percont.erp.services.products
+  datasources:
+    data-sources:
+      bootcampDS:
+        driver-name: mysql
+        jndi-name: java:/bootcampDS
+        connection-url: jdbc:mysql://146.148.111.37:3306/products_service_db
+        jta: true
+        user-name: root
+        password: kEqvaOcrhvFjccwG

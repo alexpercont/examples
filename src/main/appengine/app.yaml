@@ -1,0 +1,21 @@
+runtime: java
+env: flex
+
+runtime_config:
+  jdk: openjdk8
+
+handlers:
+  - url: /.*
+    script: this field is required, but ignored
+
+manual_scaling:
+  instances: 1
+
+resources:
+  cpu: 1
+  memory_gb: 2.0
+
+env_variables:
+  JAVA_OPTS: "-Xms256m -Xmx1024m -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true -Djboss.as.management.blocking.timeout=1500"
+
+service: products
