@@ -14,4 +14,9 @@ public class InvalidProductExceptionMapperTest {
     public void invalidProductExceptionFailedTest(){
         Assert.fail("Not yet implemented.");
     }
+
+    @Test
+    public void invalidProductExceptionNull(){
+        Assert.assertNotNull(null);
+    }
 }
