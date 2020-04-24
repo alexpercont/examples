@@ -9,4 +9,9 @@ public class InvalidProductExceptionMapperTest {
     public void invalidProductExceptionTest(){
         Assert.assertTrue(true);
     }
+
+    @Test
+    public void invalidProductExceptionFailedTest(){
+        Assert.fail("Not yet implemented.");
+    }
 }
