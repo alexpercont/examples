@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -129,7 +130,7 @@ public class ProductsEndpoint {
     })
     public Response createProduct(@Context UriInfo uriInfo,
                                   @ApiParam("Details of the new product")
-                                    @NotNull Product product) {
+                                  @NotNull @Valid Product product) {
         ProductEntity entity = applyBack(product);
         entityManager.persist(entity);
         return created(uriInfo.getAbsolutePathBuilder().path(entity.getId()).build()).build();
@@ -145,8 +146,9 @@ public class ProductsEndpoint {
             @ApiResponse(code = 400, message = "Bad Request"),
             @ApiResponse(code = 404, message = "Not found")
     })
-    public Response updateProduct(@ApiParam("Id of the product to modify") @PathParam("id") String id,
-                                  @ApiParam("Details of the product to update") @NotNull Product product) {
+    public Response updateProduct(
+            @ApiParam("Id of the product to modify") @PathParam("id") String id,
+            @ApiParam("Details of the product to update") @NotNull @Valid Product product) {
         ProductEntity entity = entityManager.find(ProductEntity.class, id);
         if (null == entity){
             return Response.status(Status.NOT_FOUND).build();

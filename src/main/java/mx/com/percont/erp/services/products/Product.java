@@ -3,6 +3,7 @@ package mx.com.percont.erp.services.products;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -29,13 +30,15 @@ public class Product {
     private String unit;
 
     @ApiModelProperty(required = true,
-            name = "contents", value = "Amount of units contained in the product")
+            name = "contents", value = "Amount of units contained in the product, greater than 0")
     @NotNull
+    @Min(value = 0)
     private double contents;
 
     @ApiModelProperty(required = true,
-            name = "price", value = "Price of product")
+            name = "price", value = "Price of product, greather than 0")
     @NotNull
+    @Min(value = 0)
     private double price;
 
     public String getId() {
