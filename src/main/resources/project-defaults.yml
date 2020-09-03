@@ -9,7 +9,7 @@ thorntail:
       bootcampDS:
         driver-name: mysql
         jndi-name: java:/bootcampDS
-        connection-url: jdbc:mysql://146.148.111.37:3306/products_service_db
+        connection-url: jdbc:mysql://10.61.96.3:3306/products_service_db
         jta: true
         user-name: root
         password: kEqvaOcrhvFjccwG

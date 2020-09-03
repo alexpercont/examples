@@ -18,4 +18,4 @@ resources:
 env_variables:
   JAVA_OPTS: "-Xms256m -Xmx1024m -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true -Djboss.as.management.blocking.timeout=1500"
 
-service: products
+service: default
