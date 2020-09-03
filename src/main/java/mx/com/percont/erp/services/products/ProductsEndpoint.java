@@ -68,14 +68,31 @@ public class ProductsEndpoint {
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @ApiOperation(value = "Retrieve all products")
-    @ApiResponses(@ApiResponse(code = 200, response = Product.class, responseContainer = "List", message = "Ok"))
-    public Response getProducts(@ApiParam("Name of the product to search") @QueryParam("name") String name) {
-
+    @ApiResponses({
+            @ApiResponse(code = 200, response = Product.class, responseContainer = "List", message = "Ok"),
+            @ApiResponse(code = 404, message = "Bad request")
+    })
+    public Response getProducts(
+            @ApiParam(value = "Name of the product to search (case insensitive)",
+                      name = "name", type = "string") @QueryParam("name") String name,
+            @ApiParam(value = "Filters products by price (greater than, exclusive)",
+                      name = "price_greater_than", type = "number") @QueryParam("price_greater_than") Double priceGreaterThan,
+            @ApiParam(value = "Filters products by price (less than, inclusive)",
+                      name = "price_less_than", type = "number") @QueryParam("price_less_than") Double priceLowerThan){
         CriteriaBuilder builder =  this.entityManager.getCriteriaBuilder();
         CriteriaQuery<ProductEntity> query = builder.createQuery(ProductEntity.class);
         Root<ProductEntity> root = query.from(ProductEntity.class);
         if (null != name){
             query.where(builder.like(root.get("name"), "%".concat(name).concat("%")));
+        }
+
+        // Intentional defect: Documentation says fiter is inclusive, code says otherwise.
+        if (null != priceLowerThan) {
+            query.where(builder.lessThan(root.get("price"), priceLowerThan));
+        }
+
+        if (null != priceGreaterThan) {
+            query.where(builder.greaterThan(root.get("price"), priceGreaterThan));
         }
         Stream<ProductEntity> stream = entityManager.createQuery(query).getResultStream();
         List<Product> productList = stream.map(ProductsEndpoint::apply).collect(Collectors.toList());
@@ -112,7 +129,7 @@ public class ProductsEndpoint {
     })
     public Response createProduct(@Context UriInfo uriInfo,
                                   @ApiParam("Details of the new product")
-                                    @NotNull @ValidProduct(message = "invalid product") Product product) {
+                                    @NotNull Product product) {
         ProductEntity entity = applyBack(product);
         entityManager.persist(entity);
         return created(uriInfo.getAbsolutePathBuilder().path(entity.getId()).build()).build();
