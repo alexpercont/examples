@@ -161,6 +161,12 @@ public class ProductsEndpoint {
             return Response.status(Status.NOT_FOUND).build();
         }
 
+        if (!entity.getId().equals(product.getId())){
+            return Response.status(Status.BAD_REQUEST).entity(
+                    "id " + id + " does not match id of object: " + product.getId()).
+                    build();
+        }
+
         ProductEntity newEntity = applyBack(product);
         ProductEntity updated = entityManager.merge(newEntity);
         return Response.ok(apply(updated)).build();
