@@ -1,15 +1,34 @@
 thorntail:
+  security:
+    security-domains:
+      my-domain:
+        classic-authentication:
+          login-modules:
+            Database:
+              code: Database
+              flag: required
+              module-options:
+                dsJndiName: java:/bootcampDS
+                principalsQuery: SELECT password FROM users WHERE username=?
+                rolesQuery: SELECT role, 'Roles' FROM roles WHERE username=?
+
   deployment:
     bootcamp-api-1.0-SNAPSHOT.war:
       swagger:
         packages:
           - mx.com.percont.erp.services.products
+
+      web:
+        login-config:
+          auth-method: BASIC
+          security-domain: my-domain
+
   datasources:
     data-sources:
       bootcampDS:
         driver-name: mysql
         jndi-name: java:/bootcampDS
-        connection-url: jdbc:mysql://10.61.96.3:3306/products_service_db
+        connection-url: jdbc:mysql://34.70.150.108:3306/products_service_db
         jta: true
         user-name: root
         password: kEqvaOcrhvFjccwG

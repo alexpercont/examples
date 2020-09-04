@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -40,6 +42,7 @@ import static javax.ws.rs.core.Response.ok;
 @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 @Api(value = "/products")
 @Stateless
+@DeclareRoles({"VIEWER", "EDITOR"})
 public class ProductsEndpoint {
 
     @PersistenceContext(unitName = "products_service_pu")
@@ -68,6 +71,7 @@ public class ProductsEndpoint {
     @GET
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @RolesAllowed("VIEWER")
     @ApiOperation(value = "Retrieve all products")
     @ApiResponses({
             @ApiResponse(code = 200, response = Product.class, responseContainer = "List", message = "Ok"),
@@ -104,6 +108,7 @@ public class ProductsEndpoint {
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Path("/{id}")
+    @RolesAllowed("VIEWER")
     @ApiOperation(value = "Obtain the details of a single product.", response = Product.class)
     @ApiResponses({
             @ApiResponse(code = 200, response = Product.class, message = "Ok"),
@@ -123,6 +128,7 @@ public class ProductsEndpoint {
     @POST
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @RolesAllowed("EDITOR")
     @ApiOperation(value = "Register a new product.")
     @ApiResponses({
             @ApiResponse(code = 201, message = "Created"),
@@ -140,6 +146,7 @@ public class ProductsEndpoint {
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Path("/{id}")
+    @RolesAllowed("EDITOR")
     @ApiOperation(value = "Update the details of a product.")
     @ApiResponses({
             @ApiResponse(code = 200, response = Product.class, message = "OK"),
