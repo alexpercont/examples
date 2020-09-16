@@ -1,0 +1,1014 @@
+{
+	"info": {
+		"_postman_id": "55132d5c-b712-44dd-99a3-a34caa18f291",
+		"name": "Percont ERP Products REST API example",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Delete product by id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2",
+											"description": "(Required) Id of the product to find"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/products/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"products",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/products/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"products",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"contents\": \"<number>\",\n \"id\": \"<string>\",\n \"name\": \"<string>\",\n \"price\": \"<number>\",\n \"unit\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Update the details of a product.",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "editor123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "editor",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"11\",\n    \"name\": \"sopa de lentejas\",\n    \"unit\": \"g\",\n    \"contents\": 250.0,\n    \"price\": 80.0\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/products/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										":id"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "NAME",
+											"value": null,
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Not found",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"contents\": \"<number>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"price\": \"<number>\",\n    \"unit\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/products/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"products",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"contents\": \"<number>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"price\": \"<number>\",\n    \"unit\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/products/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"products",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"contents\": \"<number>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"price\": \"<number>\",\n    \"unit\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/products/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"products",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"contents\": \"<number>\",\n \"id\": \"<string>\",\n \"name\": \"<string>\",\n \"price\": \"<number>\",\n \"unit\": \"<string>\"\n}"
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "658d5c42-29e4-43e1-afe7-bed9c89a82fd",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "384428db-e035-4132-b3aa-f438e3dd638b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Register a new product.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "34afe54a-30a1-49db-affb-b39ea61ed954",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify new url response is 200\", function (){    \r",
+									"    pm.sendRequest({\r",
+									"        url: pm.response.headers.get('Location'),\r",
+									"        header: [{\r",
+									"            key: 'Authorization',\r",
+									"            value: pm.request.headers.get('Authorization')\r",
+									"        }]\r",
+									"    }, function (err, response) {\r",
+									"        pm.expect(response.code).to.be.oneOf([200]);\r",
+									"    });\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "602cdc90-1725-4b41-b15e-cf3ba6173a21",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "editor123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "editor",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"contents\": 250,\n    \"unit\": \"g\",\n    \"id\": \"apc3123\",\n    \"price\": 45,\n    \"name\": \"Producto sin precio\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"contents\": \"<number>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"price\": \"<number>\",\n    \"unit\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/products",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Bad request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"contents\": \"<number>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"price\": \"<number>\",\n    \"unit\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/products",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Register a new product (format)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/plain"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"contents\": 250,\n    \"id\": \"3\",\n    \"name\": \"Fetuccini\",\n    \"price\": 15,\n    \"unit\": \"g\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"contents\": \"<number>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"price\": \"<number>\",\n    \"unit\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/products",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Bad request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"contents\": \"<number>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"price\": \"<number>\",\n    \"unit\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/products",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6c868def-9d87-4248-a5ef-5303a5758da3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "8530074f-7474-4c77-9042-a116009eee53",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Get products",
+			"item": [
+				{
+					"name": "Retrieve all products",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d645e234-bb32-4b9f-ace5-c0078580c4df",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "{{testContentType}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products?name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"contents\": 34501062.37566221,\n  \"id\": \"deserunt magna ea\",\n  \"name\": \"in et\",\n  \"price\": -34789329.748318076,\n  \"unit\": \"pariatur sunt enim aliqui\"\n },\n {\n  \"contents\": -25894315.329957917,\n  \"id\": \"veniam Lorem aliqua sunt cillum\",\n  \"name\": \"aliqua\",\n  \"price\": 46482032.10857731,\n  \"unit\": \"anim qui commodo ea mollit\"\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "Retrieve all products by name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4e09678b-cbbb-459b-9773-0e695c9e910c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "{{testContentType}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/products?name=de",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "de"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products?name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"contents\": 34501062.37566221,\n  \"id\": \"deserunt magna ea\",\n  \"name\": \"in et\",\n  \"price\": -34789329.748318076,\n  \"unit\": \"pariatur sunt enim aliqui\"\n },\n {\n  \"contents\": -25894315.329957917,\n  \"id\": \"veniam Lorem aliqua sunt cillum\",\n  \"name\": \"aliqua\",\n  \"price\": 46482032.10857731,\n  \"unit\": \"anim qui commodo ea mollit\"\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "Retrieve all products by range",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "47c5781b-a32c-4cf5-a475-2f19fcf6cf79",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "{{testContentType}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/products?price_greater_than=5&price_less_than=25",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "price_greater_than",
+									"value": "5"
+								},
+								{
+									"key": "price_less_than",
+									"value": "25"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products?name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"contents\": 34501062.37566221,\n  \"id\": \"deserunt magna ea\",\n  \"name\": \"in et\",\n  \"price\": -34789329.748318076,\n  \"unit\": \"pariatur sunt enim aliqui\"\n },\n {\n  \"contents\": -25894315.329957917,\n  \"id\": \"veniam Lorem aliqua sunt cillum\",\n  \"name\": \"aliqua\",\n  \"price\": 46482032.10857731,\n  \"unit\": \"anim qui commodo ea mollit\"\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "Obtain the details of a single product.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9bf14b9f-6ca4-4303-8515-56073e2bce5c",
+								"exec": [
+									"var schema = {\r",
+									"    \"name\": {\r",
+									"        \"type\": \"string\"\r",
+									"    },\r",
+									"    \"id\": {\r",
+									"        \"type\": \"string\"\r",
+									"    },\r",
+									"    \"name\": {\r",
+									"        \"type\": \"string\"\r",
+									"    },\r",
+									"    \"unit\": {\r",
+									"        \"type\": \"string\"\r",
+									"    },\r",
+									"    \"contents\": {\r",
+									"        \"type\": \"number\"\r",
+									"    },\r",
+									"    \"price\": {\r",
+									"        \"type\": \"number\"\r",
+									"    }};\r",
+									"    \r",
+									"pm.test('Response object matches required schema', function () {\r",
+									"    pm.expect(tv4.validate(pm.response.text(), schema)).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "{{testContentType}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/products/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "uno",
+									"description": "(Required) Id of the product to find"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"contents\": \"<number>\",\n \"id\": \"<string>\",\n \"name\": \"<string>\",\n \"price\": \"<number>\",\n \"unit\": \"<string>\"\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0be268b9-b442-4a30-95e6-fd3ff03395e0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "f4c33fed-7c5d-42da-8c89-3b4f666e09c8",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"})"
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "viewer123",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "viewer",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b73bf394-2375-4db6-8771-205017949345",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6a1b38a4-1e19-4c90-bf14-24dc1f7f7128",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "8ebf419e-f5f0-42c3-82cd-9e1ab145feb3",
+			"key": "baseUrl",
+			"value": "http://qaminds-bootcamp.uc.r.appspot.com"
+		},
+		{
+			"id": "b69f0a80-2663-4065-84dc-d1e22faef446",
+			"key": "testContentType",
+			"value": "application/json"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
