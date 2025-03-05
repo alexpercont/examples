@@ -2,12 +2,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>io.github.alexpercont</groupId>
-    <artifactId>jakarta-ee-example</artifactId>
+    <groupId>io.github.alexpercont.examples.jakarta-ee</groupId>
+    <artifactId>jakarta-ee-application-example</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Jakarta EE application example</name>
     <description>A full Jakarta EE web application, intending to use most common Jakarta EE features.</description>
 
+    <modules>
+        <module>persistence</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>jakarta.platform</groupId>
+                <artifactId>jakarta.jakartaee-api</artifactId>
+                <version>10.0.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
