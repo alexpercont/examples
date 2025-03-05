@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>io.github.alexpercont</groupId>
+    <artifactId>jakarta-ee-example</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Jakarta EE application example</name>
+    <description>A full Jakarta EE web application, intending to use most common Jakarta EE features.</description>
+
+</project>
