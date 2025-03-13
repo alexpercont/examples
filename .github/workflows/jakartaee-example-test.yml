@@ -3,12 +3,12 @@ name: JakartaEE Examples
 on:
   push:
     branches:
-      - main
+      - master
     paths:
       - 'jakarta-ee/**'
   pull_request:
     branches:
-      - main
+      - master
     paths:
       - 'jakarta-ee/**'
 
