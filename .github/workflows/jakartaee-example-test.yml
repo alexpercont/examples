@@ -1,0 +1,25 @@
+name: JakartaEE Examples
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'jakarta-ee/**'
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'jakarta-ee/**'
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+          cache: 'maven'
+      - run: mvn -B test -f jakarta-ee/pom.xml
