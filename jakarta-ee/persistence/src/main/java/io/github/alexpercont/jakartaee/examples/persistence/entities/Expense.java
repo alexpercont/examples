@@ -1,9 +1,6 @@
 package io.github.alexpercont.jakartaee.examples.persistence.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.math.BigInteger;
 
@@ -18,5 +15,8 @@ public class Expense {
     @Column(nullable = false)
     private BigInteger amount;
 
+    @ManyToOne
+    @JoinColumn(name = "category", nullable = false)
+    private ExpenseCategory category;
 
 }
