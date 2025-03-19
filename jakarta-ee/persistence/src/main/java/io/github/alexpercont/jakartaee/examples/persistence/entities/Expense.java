@@ -6,11 +6,12 @@ import java.math.BigInteger;
 
 @Entity
 @Table(name = "expenses")
-public class Expense {
+public class Expense implements EntityClass {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private String id;
+    private Long id;
 
     @Column(nullable = false)
     private BigInteger amount;
