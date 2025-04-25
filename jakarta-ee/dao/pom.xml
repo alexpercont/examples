@@ -8,21 +8,22 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>jakarta-ee-persistence</artifactId>
+    <artifactId>jakarta-ee-dao</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>Jakarta EE application example - persistence layer</name>
+    <name>Jakarta EE application example - data access objects layer</name>
 
     <dependencies>
+        <dependency>
+            <groupId>io.github.alexpercont.examples.jakarta-ee</groupId>
+            <artifactId>jakarta-ee-persistence</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-api</artifactId>
             <scope>provided</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
+
 </project>
