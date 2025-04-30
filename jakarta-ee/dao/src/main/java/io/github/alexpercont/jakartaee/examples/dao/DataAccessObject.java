@@ -6,4 +6,5 @@ public interface DataAccessObject<Entity extends EntityClass, Id> {
 
     Entity findById(Id id);
 
+    void create(Entity entity);
 }

@@ -17,4 +17,9 @@ public abstract class JpaDataAccessObject <Entity extends EntityClass, Id> imple
     public Entity findById(Id id) {
         return entityManager.find(entityClass, id);
     }
+
+    @Override
+    public void create(Entity entity) {
+        entityManager.persist(entity);
+    }
 }
