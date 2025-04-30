@@ -4,7 +4,7 @@ import io.github.alexpercont.jakartaee.examples.persistence.entities.EntityClass
 
 public interface DataAccessObject<Entity extends EntityClass, Id> {
 
-    Entity findById(Id id);
+    Entity read(Id id);
 
     void create(Entity entity);
 }

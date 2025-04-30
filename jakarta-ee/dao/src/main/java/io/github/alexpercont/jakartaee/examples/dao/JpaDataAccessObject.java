@@ -14,7 +14,7 @@ public abstract class JpaDataAccessObject <Entity extends EntityClass, Id> imple
     }
 
     @Override
-    public Entity findById(Id id) {
+    public Entity read(Id id) {
         return entityManager.find(entityClass, id);
     }
 
